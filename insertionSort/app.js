@@ -1,4 +1,41 @@
-const insertionSort = arr => { // сортировка вставками
+function initArray (n) {
+
+    let arr = [];
+
+    for(let i = 1; i <= n; i++){
+
+        arr.push(i);
+
+    }
+
+    return arr;
+
+}
+
+
+function shuffle (input_number) {
+
+    let arr = initArray(input_number);
+
+    for(let i = arr.length - 1; i > 0; i--){
+
+        let tmp = arr[i];
+
+        let rnd = Math.floor(Math.random() * (i * 1)) // рамдомное число (до индекса i) и округление его до целочисленного
+
+        arr[i] = arr[rnd]; // просто заменяем элемент массива на рандомно сгенерированый индекс
+        arr[rnd] = tmp; // меняем местами arr[i] и arr[rnd]
+
+    }
+
+    return arr;
+
+}
+
+
+const insertionSort = (n) => { // сортировка вставками
+
+    const arr = shuffle(n)
 
     console.log(arr);
 
@@ -25,4 +62,4 @@ const insertionSort = arr => { // сортировка вставками
 }
 
 
-insertionSort([6,3,2,5,4,1]);
+insertionSort(6);

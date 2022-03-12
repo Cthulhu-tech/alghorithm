@@ -1,4 +1,41 @@
-function bubbleSort(arr) { // сортировка пузырьком
+function initArray (n) {
+
+    let arr = [];
+
+    for(let i = 1; i <= n; i++){
+
+        arr.push(i);
+
+    }
+
+    return arr;
+
+}
+
+
+function shuffle (input_number) {
+
+    let arr = initArray(input_number);
+
+    for(let i = arr.length - 1; i > 0; i--){
+
+        let tmp = arr[i];
+
+        let rnd = Math.floor(Math.random() * (i * 1)) // рамдомное число (до индекса i) и округление его до целочисленного
+
+        arr[i] = arr[rnd]; // просто заменяем элемент массива на рандомно сгенерированый индекс
+        arr[rnd] = tmp; // меняем местами arr[i] и arr[rnd]
+
+    }
+
+    return arr;
+
+}
+
+
+function bubbleSort(n) { // сортировка пузырьком
+
+    const arr = shuffle(n);
 
     for (let i = 0; i < arr.length - 1; i++) { // общая длина массив - 1
 
@@ -24,4 +61,4 @@ function bubbleSort(arr) { // сортировка пузырьком
 
 }
 
-bubbleSort([6,3,2,5,4,1]);
+bubbleSort(6);
