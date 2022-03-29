@@ -1,0 +1,19 @@
+{
+  "name": "alg_3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "alg.ts",
+  "scripts": {
+    "start": "nodemon index.ts",
+    "build": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^17.0.14"
+  },
+  "dependencies": {
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.4.0"
+  }
+}
