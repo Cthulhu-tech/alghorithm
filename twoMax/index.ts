@@ -1,3 +1,10 @@
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
 class Programm {
 
     constructor(n:number) {
@@ -10,29 +17,28 @@ class Programm {
   
     private twoMax(poly:number[]){
   
-      const notDyplicateArray = this.RemoveDuplicate(poly);
-      
+
       let prevMax = 0;
       let prevMaxIndex = 0;
       let lastMax = 0;
       let lastMaxIndex = 0;
 
-      console.log(notDyplicateArray)
+      console.log(poly)
 
-      for(let i = 0; i < notDyplicateArray.length; i++){
+      for(let i = 0; i < poly.length; i++){
 
-        if(notDyplicateArray[i] > lastMax){
+        if(poly[i] > lastMax){
           
           prevMax = lastMax;
           prevMaxIndex = lastMaxIndex;
-          lastMax = notDyplicateArray[i];
+          lastMax = poly[i];
           lastMaxIndex = i;
           
         }
 
-        if(notDyplicateArray[i] > prevMax && lastMax > notDyplicateArray[i]){
+        if(poly[i] > prevMax && lastMax > poly[i]){
 
-          prevMax = notDyplicateArray[i];
+          prevMax = poly[i];
           prevMaxIndex = i;
 
         }
@@ -40,30 +46,15 @@ class Programm {
       }
 
       console.log({lastMax, lastMaxIndex}, {prevMax, prevMaxIndex}, "my programm");
-      let max = Math.max(...notDyplicateArray);
-      let indexMax = notDyplicateArray.indexOf(max);
-      notDyplicateArray.splice(indexMax,1);
-      let min = Math.max(...notDyplicateArray);
-      let indexMin = notDyplicateArray.indexOf(min);
-      console.log(notDyplicateArray);
+      let max = Math.max(...poly);
+      let indexMax = poly.indexOf(max);
+      poly.splice(indexMax ,1 , -1);
+      let min = Math.max(...poly);
+      let indexMin = poly.indexOf(min);
+      console.log(poly);
       console.log({max,indexMax}, {min,indexMin}, "javascript method");
 
-
-  
-    }
-    private RemoveDuplicate(poly:number[]){
-        let i = 1
-        let j = 0
-        while(i < poly.length){
-           if(poly[j] === poly[i]){
-               i++
-           }else{
-               j++
-               poly[j] = poly[i]
-           }
-        }
-        return poly;
-    }
+    } 
     private RandomArray(n: number):number[]{
       let result:number[] = new Array(n);
       for (let i = 0; i < n; i++){
@@ -81,6 +72,8 @@ class Programm {
     }
   }
   
-  const random_N:number = Math.floor(Math.random() * (1 - 100) + 100);
-  const poly = new Programm(random_N);
+rl.question('Array length: ', (answer:number) => {
+  const poly = new Programm(Number(answer));
   poly.Main();
+  rl.close();
+});

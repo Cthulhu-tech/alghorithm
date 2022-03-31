@@ -1,18 +1,13 @@
 function degree(a, n){ // степень числа
 
 
-    if(n === 0) return 1;
-
-    if(n < 1){
-
-        return n > -1 ? 1 / a : 1 / a * degree(a , n + 1);
-
-    }else{
-
-
-        return n === 1 ? a : a * degree(a , n - 1);
+    if(n !== 0){
+        
+        return n > 0 ? a * degree(a , n - 1) : 1 / a * degree(a , n + 1);
 
     }
+    return 1;
+
 
 }
 

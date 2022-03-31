@@ -17,7 +17,7 @@ function shuffle (input_number_1, input_number_2) {
 
     let arr = initArray(input_number_2);
 
-    for(let i = input_number_1; i > 0; i--){
+    for(let i = input_number_2 - 1; i > arr.length - input_number_1 - 1; i--){
 
         let tmp = arr[i];
 
